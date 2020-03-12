@@ -42,9 +42,16 @@ function addTicket() {
 function searchTicket(){
 	refreshCount = 10;
     let thisTicket = matrixHole.join('');
+    let matrixRevers = [];
+    for(let i = 0; i<4; i++){
+        for(let j=3;j>-1;j--){
+            matrixRevers.push(matrixHole[i*4+j]);
+        }
+    }
+    let ticketRevers = matrixRevers.join('');
     let tiketsNumbers = [];
     for(let i = tickets.length-1; i>=0 ; i--) {
-       if(tickets[i] == thisTicket){
+       if(tickets[i] == thisTicket || tickets[i] == ticketRevers ){
            tiketsNumbers.push(i+1);
        }
     }
