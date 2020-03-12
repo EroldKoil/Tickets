@@ -67,10 +67,11 @@ body{
 }
 
 .button{
-    font-size: 50px;
+    font-size: 44px;
     border: solid 3px #000;
-    padding: 18px 40px;
-    width: 24%;
+    text-align: center;
+    padding: 18px 0;
+    width: 19%;
     border-radius: 16px;
     background-color: cornflowerblue;
     height: 106px;
