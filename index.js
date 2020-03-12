@@ -19,12 +19,12 @@ window.onload = function () {
     keys.addEventListener('click', function (event) {
         let target = event.target;
         if(target.classList.contains("key") ){
-            if (target.classList.contains("selected-key")){
-                target.classList.remove("selected-key");
+            if (target.classList.contains("selected")){
+                target.classList.remove("selected");
                 matrixHole[target.id] = 0;
             }
             else{
-                target.classList.add("selected-key");
+                target.classList.add("selected");
                 matrixHole[target.id] = 1;
             }
         }
@@ -76,14 +76,31 @@ function listTickets (){
         mode = 'list';
         keys.classList.add('hidden');
         list.classList.remove('hidden');
+        
+        let listText = '';
+        for(let i = 0; i < tickets.length; i++){
+        	let t = tickets[i].split('');
+        	let ticketDom = `<div class="ticketDomMain">`;
+        	console.log('t= ' + t);
+        	for(let j = 0; j<t.length; j++){
+        		if(t[j] == 1){
+        			ticketDom += `<div class="ticketDom" name="selected" ></div>`;
+        		}
+        		else{
+        			ticketDom += `<div class="ticketDom"></div>`;
+        		}
+        	}
+        	ticketDom +=`</div>`
+        	console.log('ticketDom= ' + ticketDom);
+            listText += `<div id="ticketNumber-${i}" class="oneTicket">№${i+1} ${ticketDom}</div>`;
+        }
+        list.innerHTML = listText;
+        
+        
+        
     }
     else{
         mode = 'keys';
-        let listText = '';
-        for(let i = 0; i < tickets.length; i++){
-            listText += `№${i} = ${tickets[i]} <br>`;
-        }
-        list.innerHTML = listText;
         list.classList.add('hidden');
         keys.classList.remove('hidden');
 
